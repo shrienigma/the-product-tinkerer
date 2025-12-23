@@ -1,3 +1,12 @@
+"""
+Streamlit UI for the blog/article summarizer.
+
+This provides a PM-friendly interface around the core functions in `summarize_article.py`:
+- paste a URL
+- provide an OpenAI API key
+- tweak summary settings
+"""
+
 import streamlit as st
 
 from summarize_article import extract_main_text, summarize_with_openai
@@ -13,9 +22,19 @@ st.write(
 
 with st.sidebar:
     st.header("Settings")
+    # API key is provided per-session in the UI instead of relying on environment variables.
     api_key = st.text_input("OpenAI API key", type="password")
-    max_words = st.slider("Max summary length (words)", min_value=50, max_value=500, value=200, step=25)
-    language = st.selectbox("Summary language", ["English", "Hindi", "Spanish", "French", "German"])
+    max_words = st.slider(
+        "Max summary length (words)",
+        min_value=50,
+        max_value=500,
+        value=200,
+        step=25,
+    )
+    language = st.selectbox(
+        "Summary language",
+        ["English", "Hindi", "Spanish", "French", "German"],
+    )
     model = st.text_input("OpenAI model", value="gpt-4o-mini")
 
 
@@ -46,7 +65,7 @@ if st.button("Summarize", type="primary"):
             with st.expander("Show extracted article text"):
                 st.text_area("Article text", article_text, height=300)
 
-        except Exception as e:  # noqa: BLE001
-            st.error(f"Error: {e}")
+        except Exception as exc:  # Broad catch is acceptable at UI boundary.
+            st.error(f"Error: {exc}")
 
 
