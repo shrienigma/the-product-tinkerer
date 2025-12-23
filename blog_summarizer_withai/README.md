@@ -2,7 +2,7 @@
 
 ## 🎯 What This Project Does
 
-This project helps Product Managers quickly digest long-form content by building a web app that summarizes any article from a URL using OpenAI's API. Instead of reading entire articles, PMs can paste a link and get a concise summary in seconds. It solves the problem of information overload—a common challenge when researching competitors, industry trends, or technical documentation.
+This project helps users quickly digest long-form content by building a web app that summarizes any article from a URL using OpenAI's API. Instead of reading entire articles, users can paste a link and get a concise summary in seconds. It solves the problem of information overload—a common challenge when researching competitors, industry trends, or technical documentation.
 
 ## 🧠 AI Concepts You'll Learn
 
